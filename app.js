@@ -17,7 +17,8 @@ mongoose.connect(mongoDB)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var authRouter = require('./routes/auth'); // <--- 新增: 引入 auth 路由
+var authRouter = require('./routes/auth');
+var notesRouter = require('./routes/notes');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/auth', authRouter); // <--- 新增: 使用 auth 路由，并添加 /api/auth 前缀
+app.use('/api/notes', notesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
